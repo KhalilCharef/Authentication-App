@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 62.5%;
+  }
+  
+  *,
+  html {
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+    font-family: "Noto Sans", sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .user-info h3,
+  .edit-user-info h3 {
+    font-size: 2.4rem;
+    margin-bottom: 0.8rem;
+  
+    @media @dark {
+      color: #e0e0e0;
+    }
+  }
+  
+  @media @dark {
+    body,
+    input {
+      background-color: #252329;
+    }
+  }
+  
+  .image-wrapper {
+    overflow: hidden;
+  
+    img {
+      width: 100%;
+    }
+  }

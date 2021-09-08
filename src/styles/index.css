@@ -1,0 +1,582 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+*,
+html {
+  font-family: "Noto Sans", sans-serif;
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v12/o-0IIpQlx3QUlC5A4PNb4g.ttf) format('truetype');
+}
+a {
+  text-decoration: none;
+}
+.user-info h3,
+.edit-user-info h3 {
+  font-size: 2.4rem;
+  margin-bottom: 0.8rem;
+}
+@media (prefers-color-scheme: dark) {
+  .user-info h3,
+  .edit-user-info h3 {
+    color: #e0e0e0;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body,
+  input {
+    background-color: #252329;
+  }
+}
+.image-wrapper {
+  overflow: hidden;
+}
+.image-wrapper img {
+  width: 100%;
+}
+.auth-form {
+  width: 47.4rem;
+  padding: 5.1rem 5.9rem 4.3rem;
+  margin: 10rem auto 0;
+  border: 1px solid #bdbdbd;
+  border-radius: 24px;
+}
+.auth-form .logo {
+  margin-bottom: 3rem;
+}
+.auth-form h2 {
+  color: #333333;
+  font-size: 1.8rem;
+  font-weight: 600;
+  width: 30rem;
+  margin-bottom: 1.45rem;
+}
+@media (prefers-color-scheme: dark) {
+  .auth-form h2 {
+    color: #e0e0e0;
+  }
+}
+.auth-form p {
+  color: #333333;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 21.79px;
+  letter-spacing: -0.035em;
+  margin-bottom: 3.46rem;
+}
+@media (prefers-color-scheme: dark) {
+  .auth-form p {
+    color: #e0e0e0;
+  }
+}
+.auth-form form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3.2rem;
+}
+.auth-form form .input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.25rem;
+}
+.auth-form form .email-wrapper {
+  margin-bottom: 1.45rem;
+}
+.auth-form form input {
+  width: 100%;
+  border: 1px solid #bdbdbd;
+  border-radius: 8px;
+  color: #333333;
+  font-size: 1.6rem;
+  font-weight: 400;
+  padding: 1.3rem;
+  padding-left: 4.69rem;
+}
+.auth-form form input::placeholder {
+  color: #828282;
+}
+@media (prefers-color-scheme: dark) {
+  .auth-form form input {
+    color: #e0e0e0;
+  }
+}
+.auth-form form .lock-icon,
+.auth-form form .email-icon {
+  color: #828282;
+  position: absolute;
+  left: 1.4rem;
+}
+.auth-form form button {
+  width: 100%;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background-color: #2f80ed;
+  padding: 0.7rem 0 0.9rem;
+}
+.auth-form .alt-auth-opt {
+  text-align: center;
+  color: #828282;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 2.25rem;
+}
+.auth-form .alt-auth-btns {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.7rem;
+}
+.auth-form .logo-btn {
+  cursor: pointer;
+}
+.auth-form .switch-auth {
+  text-align: center;
+  color: #828282;
+  font-size: 1.4rem;
+  margin: 0;
+}
+.auth-form .switch-auth a {
+  color: #2d9cdb;
+}
+.login-form h2 {
+  margin-bottom: 2.72rem;
+}
+.profile-page {
+  padding: 2.5rem 7.2rem;
+}
+.profile-page header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+.profile-page header .account {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+.profile-page header .image-wrapper {
+  width: 3.2rem;
+  height: 3.2rem;
+  background-color: #c4c4c4;
+  border-radius: 8px;
+  margin-right: 1.1rem;
+}
+.profile-page header span {
+  transition: 0.4s ease;
+}
+@media (prefers-color-scheme: dark) {
+  .profile-page header span {
+    color: #e0e0e0;
+  }
+}
+.profile-page header .rotate-arrow {
+  transform: rotate(180deg);
+}
+.profile-page header .user-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #333333;
+  margin-right: 1.9rem;
+}
+@media (prefers-color-scheme: dark) {
+  .profile-page header .user-name {
+    color: #e0e0e0;
+  }
+}
+.profile-page header .account-options {
+  position: absolute;
+  top: 5.9rem;
+  right: 0;
+  background-color: white;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem 1.2rem;
+}
+@media (prefers-color-scheme: dark) {
+  .profile-page header .account-options {
+    background-color: #252329;
+  }
+}
+.profile-page header .account-options button {
+  width: 16.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0.95rem 1.16rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #4f4f4f;
+  background-color: transparent;
+  cursor: pointer;
+}
+.profile-page header .account-options button:hover {
+  background-color: #f2f2f2;
+}
+@media (prefers-color-scheme: dark) {
+  .profile-page header .account-options button:hover {
+    background-color: #3c3942;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .profile-page header .account-options button,
+  .profile-page header .account-options button span {
+    color: #e0e0e0;
+  }
+}
+.profile-page header .account-options hr {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 1.2rem 0;
+}
+.profile-page header .account-options .logout-btn,
+.profile-page header .account-options .logout-btn span {
+  color: #eb5757;
+}
+.profile-page header .account-options span {
+  color: #4f4f4f;
+  margin-right: 1rem;
+}
+.profile-page h2 {
+  font-size: 3.6rem;
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+.profile-page p {
+  text-align: center;
+  font-weight: 300;
+  font-size: 1.8rem;
+  margin-bottom: 4.4rem;
+}
+@media (prefers-color-scheme: dark) {
+  .profile-page h2,
+  .profile-page p {
+    color: #e0e0e0;
+  }
+}
+.user-info {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  margin: 0 auto;
+  width: 90rem;
+}
+@media (prefers-color-scheme: dark) {
+  .user-info {
+    border-color: #bdbdbd;
+  }
+}
+.user-info .user-info-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 3.9rem 4.9rem;
+  border-bottom: 1px solid #d3d3d3;
+}
+@media (prefers-color-scheme: dark) {
+  .user-info .user-info-header {
+    border-color: #bdbdbd;
+  }
+}
+.user-info .user-info-header span {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #828282;
+}
+.user-info .user-info-header button {
+  color: #828282;
+  background-color: transparent;
+  font-size: 1.6rem;
+  font-weight: 500;
+  border: 1px solid #828282;
+  border-radius: 12px;
+  padding: 0.8rem 3.3rem;
+  cursor: pointer;
+}
+.user-info .user-info-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 2.4rem 4.9rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+.user-info .user-info-row .image-wrapper {
+  width: 7.2rem;
+  height: 7.2rem;
+  background-color: #c4c4c4;
+  border-radius: 8px;
+}
+.user-info .user-info-row .row-name {
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #bdbdbd;
+  align-self: center;
+}
+.user-info .user-info-row .row-data {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #333333;
+}
+@media (prefers-color-scheme: dark) {
+  .user-info .user-info-row .row-data {
+    color: #e0e0e0;
+  }
+}
+.user-info .photo-row {
+  padding: 1.5rem 4.9rem;
+}
+.user-info #password-row {
+  border: none;
+}
+.edit-user-info {
+  width: 90rem;
+  margin: 0 auto;
+}
+.edit-user-info a {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  color: #2d9cdb;
+  width: fit-content;
+  margin-bottom: 2.4rem;
+}
+.edit-user-info form {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 3rem 4.8rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+@media (prefers-color-scheme: dark) {
+  .edit-user-info form {
+    border-color: #bdbdbd;
+  }
+}
+.edit-user-info form span {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #828282;
+}
+.edit-user-info form label {
+  color: #4f4f4f;
+  margin-bottom: 0.38rem;
+}
+@media (prefers-color-scheme: dark) {
+  .edit-user-info form label {
+    color: #828282;
+  }
+}
+.edit-user-info form input,
+.edit-user-info form textarea {
+  color: #4f4f4f;
+  width: 41.7rem;
+  border: 1px solid #828282;
+  border-radius: 12px;
+  padding: 1.7rem 1.8rem;
+  margin-bottom: 2.4rem;
+}
+.edit-user-info form input::placeholder,
+.edit-user-info form textarea::placeholder {
+  color: #bdbdbd;
+}
+@media (prefers-color-scheme: dark) {
+  .edit-user-info form input,
+  .edit-user-info form textarea {
+    color: #e0e0e0;
+  }
+}
+.edit-user-info form textarea {
+  min-height: 9rem;
+  background-color: transparent;
+  resize: none;
+}
+.edit-user-info form button[type="submit"] {
+  width: 8.2rem;
+  color: white;
+  font-weight: 500;
+  font-size: 1.6rem;
+  background-color: #2f80ed;
+  padding: 0.8rem 2.4rem;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+}
+.edit-user-info .edit-image {
+  margin: 2.6rem 0 3.2rem;
+  display: flex;
+  align-items: center;
+  min-width: fit-content;
+}
+.edit-user-info .edit-image .image-wrapper {
+  width: 7.2rem;
+  height: 7.2rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin-right: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.edit-user-info .edit-image .image-wrapper span {
+  color: white;
+  position: absolute;
+  font-size: 2.5rem;
+}
+.edit-user-info .edit-image label {
+  text-transform: uppercase;
+  color: #828282;
+  font-weight: 500;
+  font-size: 1.3rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.edit-user-info .edit-image input[type='file'] {
+  display: none;
+}

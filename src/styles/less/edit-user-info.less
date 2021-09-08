@@ -1,0 +1,115 @@
+.edit-user-info {
+    width: 90rem;
+    margin: 0 auto;
+  
+    a {
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      color: #2d9cdb;
+      width: fit-content;
+      margin-bottom: 2.4rem;
+    }
+  
+    form {
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 3rem 4.8rem;
+      display: flex;
+      flex-direction: column;
+      font-size: 1.3rem;
+      font-weight: 500;
+      @media @dark {
+        border-color: #bdbdbd;
+      }
+  
+      span {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: #828282;
+      }
+  
+      label {
+        color: #4f4f4f;
+        margin-bottom: 0.38rem;
+  
+        @media @dark {
+          color: #828282;
+        }
+      }
+  
+      input, textarea {
+        color: #4f4f4f;
+        width: 41.7rem;
+        border: 1px solid #828282;
+        border-radius: 12px;
+        padding: 1.7rem 1.8rem;
+        margin-bottom: 2.4rem;
+        &::placeholder {
+          color: #bdbdbd;
+        }
+  
+        @media @dark {
+          color: #e0e0e0;
+        }
+      }
+  
+      textarea {
+        min-height: 9rem;
+        background-color: transparent;
+        resize: none;
+      }
+  
+      button[type="submit"] {
+        width: 8.2rem;
+        color: white;
+        font-weight: 500;
+        font-size: 1.6rem;
+        background-color: @blue;
+        padding: 0.8rem 2.4rem;
+        border: none;
+        border-radius: 8px;
+        margin-bottom: 1.2rem;
+      }
+    }
+  
+    .edit-image {
+      margin: 2.6rem 0 3.2rem;
+      display: flex;
+      align-items: center;
+      min-width: fit-content;
+  
+      .image-wrapper {
+        width: 7.2rem;
+        height: 7.2rem;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        margin-right: 2.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+  
+        span {
+          color: white;
+          position: absolute;
+          font-size: 2.5rem;
+        }
+      }
+  
+      label {
+        text-transform: uppercase;
+        color: #828282;
+        font-weight: 500;
+        font-size: 1.3rem;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+  
+      input[type='file'] {
+  display: none;
+      }
+    }
+  }
+  
