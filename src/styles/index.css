@@ -137,11 +137,12 @@ html {
   font-family: "Noto Sans", sans-serif;
 }
 @font-face {
-  font-family: 'Noto Sans';
+  font-family: "Noto Sans";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosans/v12/o-0IIpQlx3QUlC5A4PNb4g.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/notosans/v12/o-0IIpQlx3QUlC5A4PNb4g.ttf)
+    format("truetype");
 }
 a {
   text-decoration: none;
@@ -577,6 +578,6 @@ a {
   border: none;
   cursor: pointer;
 }
-.edit-user-info .edit-image input[type='file'] {
+.edit-user-info .edit-image input[type="file"] {
   display: none;
 }

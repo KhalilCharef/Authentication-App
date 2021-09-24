@@ -10,8 +10,9 @@ import { ReactComponent as GithubLogo } from "../assets/Github.svg";
 import GoogleLogin from "./googleLoginBtn";
 
 const LoginForm = () => {
-  const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)")
-    .matches;
+  const prefersDarkMode = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches;
   const [userCredentials, setUserCredentials] = useState({
     email: "",
     password: "",
@@ -27,6 +28,7 @@ const LoginForm = () => {
     axios
       .post("http://localhost:5000/users/login", userCredentials)
       .then((res) => {
+        console.log(res);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("id", res.data.id);
         history.push("/");

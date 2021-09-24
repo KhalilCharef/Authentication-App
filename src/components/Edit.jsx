@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
@@ -27,6 +28,16 @@ const Edit = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/me", {
+        headers: { "x-access-token": localStorage.getItem("token") },
+      })
+      .then((response) => {
+        setUserInfo({ ...userInfo, ...response.data, password: "" });
+      });
+  }, []);
+
   const handleChange = (e) => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
@@ -44,23 +55,23 @@ const Edit = () => {
     e.preventDefault();
 
     const entries = Object.entries(userInfo);
-    const updateProps = [];
     const formData = new FormData();
 
     // format the updated user info
     entries.forEach((entry) => {
-      updateProps.push({ propName: entry[0], value: entry[1] });
+      if (entry[1]) {
+        formData.set(entry[0], entry[1]);
+      }
     });
 
-    // convert the data to json
-    const jsonProps = JSON.stringify(updateProps);
-
     // add the update props (and the new image if applicable) to the formData
-    formData.append("data", jsonProps);
     if (userImage) formData.append("userImage", userImage);
 
-    axiosWithAuth()
-      .put(`http://localhost:5000/users/${userId}`, formData)
+    axios
+      // .put(`http://localhost:5000/users/${userId}`, formData)
+      .put("http://localhost:5000/edit", formData, {
+        headers: { "x-access-token": localStorage.getItem("token") },
+      })
       .then((res) => {
         history.push("/");
       })
@@ -126,7 +137,7 @@ const Edit = () => {
           value={userInfo.email}
           onChange={handleChange}
         />
-        {/* <label htmlFor="edit-password-field">Password</label>
+        <label htmlFor="edit-password-field">Password</label>
         <input
           type="password"
           id="edit-password-field"
@@ -134,8 +145,10 @@ const Edit = () => {
           name="password"
           value={userInfo.password}
           onChange={handleChange}
-        /> */}
-        <button type="submit">Save</button>
+        />
+        <button type="submit" onClick={handleSubmit}>
+          Save
+        </button>
       </form>
     </div>
   );

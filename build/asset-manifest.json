@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.94ffb18e.chunk.css",
+    "main.js": "/static/js/main.dddadeca.chunk.js",
+    "main.js.map": "/static/js/main.dddadeca.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.3fa1a4aa.js",
+    "runtime-main.js.map": "/static/js/runtime-main.3fa1a4aa.js.map",
+    "static/js/2.ee44bd9b.chunk.js": "/static/js/2.ee44bd9b.chunk.js",
+    "static/js/2.ee44bd9b.chunk.js.map": "/static/js/2.ee44bd9b.chunk.js.map",
+    "static/js/3.a7b160a6.chunk.js": "/static/js/3.a7b160a6.chunk.js",
+    "static/js/3.a7b160a6.chunk.js.map": "/static/js/3.a7b160a6.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.94ffb18e.chunk.css.map": "/static/css/main.94ffb18e.chunk.css.map",
+    "static/js/2.ee44bd9b.chunk.js.LICENSE.txt": "/static/js/2.ee44bd9b.chunk.js.LICENSE.txt",
+    "static/media/Facebook.1832314e.svg": "/static/media/Facebook.1832314e.svg",
+    "static/media/Github.f020857c.svg": "/static/media/Github.f020857c.svg",
+    "static/media/Google.c10671b3.svg": "/static/media/Google.c10671b3.svg",
+    "static/media/Twitter.4104ffa7.svg": "/static/media/Twitter.4104ffa7.svg",
+    "static/media/devchallenges-light.e890e049.svg": "/static/media/devchallenges-light.e890e049.svg",
+    "static/media/devchallenges.87158787.svg": "/static/media/devchallenges.87158787.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3fa1a4aa.js",
+    "static/js/2.ee44bd9b.chunk.js",
+    "static/css/main.94ffb18e.chunk.css",
+    "static/js/main.dddadeca.chunk.js"
+  ]
+}

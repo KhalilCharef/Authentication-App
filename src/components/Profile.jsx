@@ -10,22 +10,23 @@ import Edit from "./Edit";
 import PrivateRoute from "./PrivateRoute";
 
 const Profile = () => {
-  const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)")
-    .matches;
+  const prefersDarkMode = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches;
   const history = useHistory();
   const userId = localStorage.getItem("id");
 
   const [userInfo, setUserInfo] = useState({});
 
-  useEffect(() => {
-    axiosWithAuth()
-      .get(`http://localhost:5000/users/${userId}`)
-      .then((res) => {
-        // console.log(res.data);
-        setUserInfo(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   axiosWithAuth()
+  //     .get(`http://localhost:5000/users/${userId}`)
+  //     .then((res) => {
+  //       // console.log(res.data);
+  //       setUserInfo(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   const displayAccountOptions = () => {
     const arrow = document.querySelector(".dropdown-arrow");

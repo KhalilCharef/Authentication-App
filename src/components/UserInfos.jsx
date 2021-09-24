@@ -1,9 +1,28 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-const UserInfos = ({ userInfo }) => {
+const UserInfos = () => {
   const history = useHistory();
-
+  const [userInfo, setuserInfo] = useState({
+    name: "",
+    bio: "",
+    phone: "",
+    email: "",
+    password: "",
+    photo: "",
+  });
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/me", {
+        headers: { "x-access-token": localStorage.getItem("token") },
+      })
+      .then((response) => {
+        setuserInfo({ ...userInfo, ...response.data });
+      });
+  }, []);
+  console.log({ userInfo });
   return (
     <div>
       <h2>Personal info</h2>
