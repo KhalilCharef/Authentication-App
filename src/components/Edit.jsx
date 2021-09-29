@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-
+// import Upload from "./upload.js";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import Upload from "./upload";
 
 const Edit = () => {
   const history = useHistory();
@@ -17,13 +18,62 @@ const Edit = () => {
   const [userImage, setUserImage] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
   const userId = localStorage.getItem("id");
+  const [fileInputState, setFileInputState] = useState("");
+  const [previewSource, setPreviewSource] = useState("");
+  const [selectedFile, setSelectedFile] = useState();
+  const [successMsg, setSuccessMsg] = useState("");
+  const [errMsg, setErrMsg] = useState("");
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    previewFile(file);
+    setSelectedFile(file);
+    setFileInputState(e.target.value);
+  };
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
+
+  const handleSubmitFile = (e) => {
+    e.preventDefault();
+    if (!selectedFile) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onloadend = () => {
+      uploadImage(reader.result);
+    };
+    reader.onerror = () => {
+      console.error("AHHHHHHHH!!");
+      setErrMsg("something went wrong!");
+    };
+  };
+
+  const uploadImage = async (base64EncodedImage) => {
+    try {
+      await fetch("http://localhost:5000/api/upload", {
+        method: "POST",
+        body: JSON.stringify({ data: base64EncodedImage }),
+        headers: { "Content-Type": "application/json" },
+      });
+      setFileInputState("");
+      setPreviewSource("");
+      setSuccessMsg("Image uploaded successfully");
+    } catch (err) {
+      console.error(err);
+      setErrMsg("Something went wrong!");
+    }
+  };
 
   useEffect(() => {
     axiosWithAuth()
       .get(`http://localhost:5000/users/${userId}`)
       .then((res) => {
         setUserInfo(res.data);
-        // setUserImage(res.data.photo)
+        setUserImage(res.data.photo);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -42,13 +92,8 @@ const Edit = () => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
-  const addImage = (e) => {
-    const file = e.target.files[0];
-    setUserImage(file);
-
-    // create a temporary local URL for the file
-    const preview = URL.createObjectURL(file);
-    setImagePreview(preview);
+  const addImage = (url) => {
+    setUserInfo({ ...userInfo, photo : url})
   };
 
   const handleSubmit = (e) => {
@@ -57,6 +102,16 @@ const Edit = () => {
     const entries = Object.entries(userInfo);
     const formData = new FormData();
 
+    // if (!selectedFile) return;
+    // const reader = new FileReader();
+    // reader.readAsDataURL(selectedFile);
+    // reader.onloadend = () => {
+    //   uploadImage(reader.result);
+    // };
+    // reader.onerror = () => {
+    //   console.error("AHHHHHHHH!!");
+    //   setErrMsg("something went wrong!");
+    // };
     // format the updated user info
     entries.forEach((entry) => {
       if (entry[1]) {
@@ -65,7 +120,7 @@ const Edit = () => {
     });
 
     // add the update props (and the new image if applicable) to the formData
-    if (userImage) formData.append("userImage", userImage);
+    if (selectedFile) formData.append("userImage", selectedFile);
 
     axios
       // .put(`http://localhost:5000/users/${userId}`, formData)
@@ -83,10 +138,12 @@ const Edit = () => {
       <Link to="/">
         <span className="material-icons">chevron_left</span>Back
       </Link>
+
       <form id="update-form" onSubmit={handleSubmit}>
         <h3>Change Info</h3>
         <span>Changes will be reflected on every service</span>
-        <div className="edit-image">
+        {/* <div className="edit-image">
+          
           <div className="image-wrapper">
             <span className="material-icons">photo_camera</span>
             <img src={imagePreview ? imagePreview : userInfo.photo} alt="" />
@@ -98,8 +155,8 @@ const Edit = () => {
             id="file-upload"
             onChange={addImage}
           />
-        </div>
-
+        </div> */}
+        <Upload addImage={addImage}/>
         <label htmlFor="edit-name-field">Name</label>
         <input
           type="text"

@@ -6,12 +6,13 @@ const jwt = require("jsonwebtoken");
 const User = require("../database/User");
 var multer = require("multer");
 var upload = multer();
+const { cloudinary } = require("../src/utils/cloudinary");
+
 const app = express();
 const port = 5000;
-
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(upload.array());
 app.use(express.static(path.join(__dirname, "../build")));
 const mongoose = require("mongoose");
@@ -81,17 +82,23 @@ app.put(`/edit`, verifyToken, async (req, res) => {
     console.log({ user: req.user, body: req.body });
     await User.findByIdAndUpdate(req.user.id, { ...req.body });
     // res.send(UserInfo);
-    // console.log(newUser);
     res.status(201).send("Updated successfully");
   } catch (err) {
-    // UserInfo.updateOne({
-    //   name: name,
-    //   bio: bio,
-    //   phone: phone,
-    //   email: email,
-    //   password: password,
-    // });
     res.status(400).send(err.message);
+  }
+});
+
+app.post("/api/upload", async (req, res) => {
+  try {
+    const fileStr = req.body.data;
+    const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+      upload_preset: "auth-app",
+    });
+    console.log("req.body");
+    res.json({ url: uploadResponse.secure_url});
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ err: "Something went wrong" });
   }
 });
 

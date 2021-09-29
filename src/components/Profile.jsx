@@ -8,6 +8,7 @@ import { ReactComponent as LogoLight } from "../assets/devchallenges-light.svg";
 import UserInfos from "./UserInfos";
 import Edit from "./Edit";
 import PrivateRoute from "./PrivateRoute";
+import axios from "axios";
 
 const Profile = () => {
   const prefersDarkMode = window.matchMedia(
@@ -15,18 +16,23 @@ const Profile = () => {
   ).matches;
   const history = useHistory();
   const userId = localStorage.getItem("id");
-
-  const [userInfo, setUserInfo] = useState({});
-
-  // useEffect(() => {
-  //   axiosWithAuth()
-  //     .get(`http://localhost:5000/users/${userId}`)
-  //     .then((res) => {
-  //       // console.log(res.data);
-  //       setUserInfo(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
+  const [userInfo, setuserInfo] = useState({
+    name: "",
+    bio: "",
+    phone: "",
+    email: "",
+    password: "",
+    photo: "",
+  });
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/me", {
+        headers: { "x-access-token": localStorage.getItem("token") },
+      })
+      .then((response) => {
+        setuserInfo({ ...userInfo, ...response.data });
+      });
+  }, []);
 
   const displayAccountOptions = () => {
     const arrow = document.querySelector(".dropdown-arrow");
